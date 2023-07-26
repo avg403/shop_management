@@ -1,45 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-</head>
-
-<body data-bs-theme="dark">
-    <?php include('../components/navbar.php') ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
-    <div class="container-fluid">
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <?php
-            $img = ['dove.jpeg', 'oneplus.jpeg', 'nescafe.jpeg'];
-            foreach ($img as $i) {
-
-            ?>
-
-
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body row">
-                            <div class="col">
-                                <img style="width: 60%; aspect-ratio: 1/1; object-fit: contain; background-color: #fff;" src="img/<?php echo $i; ?>" class="card-img-top" alt="...">
-                            </div>
-                            <div class="col">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos quo qui corporis, quidem tempore architecto natus? Minima sint corrupti eligendi ab asperiores dicta nobis laborum quas! Qui distinctio veritatis soluta!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Management System - StaffLogin</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        
+        body {
+            background-image: url("./bgpick2.jpg"); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #login-form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.5s;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            ?>
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .btn-light-animation {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-light-animation::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .btn-light-animation:hover::after {
+            width: 300px;
+            height: 300px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4" id="login-form">
+                <h2 class="text-center mb-4">Staff Login</h2>
+                <form method="post" action="staff_check.php">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block btn-light-animation">Login</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>
