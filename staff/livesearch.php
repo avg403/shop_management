@@ -35,22 +35,7 @@
             <?php
             while ($row = mysqli_fetch_assoc($result)) { ?>
                 <form action="fetch.php" method="POST">
-                    <!-- <table class="table table-bordered table-striped mt-4">
-                        <thead>
-                            <tr>
-                                <th>P_ID</th>
-                                <th>P_NAME</th>
-                                <th>P_CATEGORY</th>
-                                <th>P_COMPANY</th>
-                                <th>P_PRICE</th>
-                                <th>P_DETAILS</th>
-                                <th>P_IMAGE</th>
-                                <th>NO OF ITEMS</th>
-                                <th>ADD</th>
-
-                            </tr>
-                        </thead>
-                        <tbody> -->
+                    
                     <?php
                     $p_id = $row['P_ID'];
                     $p_name = $row['P_NAME'];
@@ -81,9 +66,9 @@
                                 <?php echo $p_price; ?>
                             </td>
                             <td style="width:20%;"> <?php echo $p_details; ?> </td>
+                            
 
-
-                            <td style="width:15%;"> <img src="img/<?php echo $p_image; ?>" width=150 title="<?php echo $p_image ?>"> </td>
+                            <td style="width:15%;"> <img src="http://localhost/shop_mgmt/admin/product/img/<?php echo $p_image; ?>" width=150 title="<?php echo $p_image ?>"> </td>
                             <td style="width:8%;"><input type="hidden" name="available" value="<?php echo $p_availabe; ?>" />
                                 <?php
                                 if ($p_availabe == 0) {

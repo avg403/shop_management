@@ -1,6 +1,6 @@
 <?php
+require 'connection.php';
 if (isset($_POST["submit"])) {
-  echo "hello";
   $name = $_POST["pname"];
   if ($_FILES["image"]["error"] == 4) {
     echo
@@ -28,21 +28,59 @@ if (isset($_POST["submit"])) {
       </script>
       ";
     } else {
-      $newImageName = uniqid();
+      //$newImageName = uniqid();
+      $newImageName = $name ;
       $newImageName .= '.' . $imageExtension;
 
       move_uploaded_file($tmpName, 'img/' . $newImageName);
+
+      $sql="SELECT MAX(P_ID) FROM PRODUCTS";
+      $result=$conn->query($sql);
+      $row=mysqli_fetch_array( $result );
+      $maxid=$row['MAX(P_ID)'];
+  
+      $id=$maxid+1;
+      $product = $_POST["pname"];
+      $pcate = $_POST["category"];
+      $com = $_POST["pcompany"];
+      $price = $_POST["pprice"];
+      $available = $_POST["pavailable"];
+      $details = $_POST["productdetails"];
+      $pimage=$newImageName;
+  
+      $query = $conn->prepare('INSERT INTO PRODUCTS(P_ID,P_NAME,C_ID,P_COMPANY,P_PRICE,P_AVAILABLE,P_DETAILS,P_IMAGE)
+          VALUES (?,?,?,?,?,?,?,?);');
+  
+      $query->bind_param('isisiiss',$id,$product,$pcate,$com,$price,$available,$details,$pimage);
+  
+      $query->execute();
+      
+      mysqli_close($conn);
+
       echo
       "
       <script>
-        alert('Successfully Added');
-        document.location.href = 'insertdata.php';
+        alert(' New Product Successfully Added ');
+        document.location.href = 'http://localhost/shop_mgmt/admin/admin.php';
       </script>
       ";
     }
   }
 }
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +116,7 @@ if (isset($_POST["submit"])) {
   </center></b></h1>
   <hr>
 
-  <form action="insertdata.php" method="post" autocomplete="off">
+  <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
     <table>
 
       <tr>
@@ -122,7 +160,7 @@ if (isset($_POST["submit"])) {
         <td>
           <p>PRODUCT AVAILABLE :<br><br></p>
         </td>
-        <td><input type="text" name="pavailable" required><br><br></td>
+        <td><input type="number" name="pavailable" required><br><br></td>
       </tr>
       <tr>
         <td>
