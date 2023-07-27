@@ -21,7 +21,7 @@
     <!-- Masthead-->
     <header class="masthead">
         <div class="container">
-            <div class="masthead-subheading" style="color: black;">Welcome To Our Shop!</div>
+            <div class="masthead-subheading">Welcome To Our Shop!</div>
             <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
             <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
         </div>
