@@ -176,7 +176,7 @@ if (isset($_POST["submit"])) {
         </td>
       </tr>
     </table>
-    <center><button type="submit" name="submit" class="button2">SUBMIT</center>
+    <center><button type="submit" name="submit" class="button2">SUBMIT</button></center>
   </form>
 
 
