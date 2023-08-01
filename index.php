@@ -7,7 +7,7 @@
     
         <title>Shop management System</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="./favicon.ico" /> 
+        <link rel="icon" type="image/x-icon" href="./img/favicon.ico" /> 
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -69,6 +69,20 @@
                 <h2 class="section-heading text-uppercase">Products</h2>
                 <h3 class="section-subheading text-muted">You can always find something.</h3>
             </div>
+
+            <button onclick="window.location.href='#cosmetics';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
+                          COSMETICS</button>
+
+
+            <section id="cosmetics">
+                <?php
+                    require 'connection.php';
+                    
+
+                
+                
+                ?>
+            </section>
             <div class="row">
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <!-- Product item 1-->
@@ -201,7 +215,7 @@
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                <div class="close-modal" data-bs-dismiss="modal"><img src="./img/close-icon.svg" alt="Close modal" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -236,7 +250,7 @@
     <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                <div class="close-modal" data-bs-dismiss="modal"><img src="./img/close-icon.svg" alt="Close modal" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -271,7 +285,7 @@
     <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                <div class="close-modal" data-bs-dismiss="modal"><img src="./img/close-icon.svg" alt="Close modal" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">

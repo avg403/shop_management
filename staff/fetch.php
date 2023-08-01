@@ -11,6 +11,8 @@
     $p_idd = $_POST['pro_id'];
     $old_available = $_POST['available'];
     $bill_p_num = $_POST['item_add'];
+    $bill_p_name = $_POST['pro_name'];
+    
     $new_available = $old_available - $bill_p_num;
 
     $sql1 = "UPDATE `products` SET `P_AVAILABLE` = $new_available WHERE `P_ID` = $p_idd ";
@@ -18,6 +20,7 @@
     } else {
         echo "available update error";
     }
+
 
 
     $sql2 = "SELECT MAX(BILL_ID) FROM CART";
@@ -29,69 +32,47 @@
         $bill_id = 1;
     }
 
-    $bill_p_name = $_POST['pro_name'];
+   
     $bill_p_price = $_POST['pro_price'];
     $bill_p_total = $bill_p_price * $bill_p_num;
 
-    $sql2 = "INSERT INTO CART(BILL_ID,BILL_P_NAME,BILL_P_PRICE,BILL_P_NUM,BILL_P_TOTAL) VALUES ($bill_id,'$bill_p_name',$bill_p_price,$bill_p_num,$bill_p_total)";
-    /*
-    if ($conn->query($sql1) === TRUE) {
 
-        $query1 = "SELECT * FROM PRODUCTS WHERE P_ID=$p_idd";
+    
+//newwwww
 
-        $result1 = mysqli_query($conn, $query1);
-    ?>
-        <table class="table table-bordered table-striped mt-4">
-            <thead>
-                <tr>
-                    <th>P_ID</th>
-                    <th>P_NAME</th>
-                    <th>P_CATEGORY</th>
-                    <th>P_COMPANY</th>
-                    <th>P_PRICE</th>
-                    <th>P_DETAILS</th>
-                    <th>P_IMAGE</th>
-                    <th>NO OF ITEMS</th>
-                </tr>
-            </thead>
-            <?php
-            while ($row = mysqli_fetch_assoc($result1)) {
-                $p_id = $row['P_ID'];
-                $p_name = $row['P_NAME'];
-                $p_category = $row['P_CATEGORY'];
-                $p_company = $row['P_COMPANY'];
-                $p_price = $row['P_PRICE'];
-                $p_availabe = $row['P_AVAILABLE'];
-                $p_details = $row['P_DETAILS'];
-                $p_image = $row['P_IMAGE'];
-                $p_temp = 0;
-            ?>
-                <tr>
-                    <td><?php echo $p_id; ?> </td>
-                    <td> <?php echo $p_name; ?> </td>
-                    <td> <?php echo $p_category; ?> </td>
-                    <td> <?php echo $p_company; ?> </td>
-                    <td> <?php echo $p_price; ?> </td>
-                    <td> <?php echo $p_details; ?> </td>
-                    <td> <img src="img/<?php echo $p_image; ?>" width=150 title="<?php echo $p_image ?>"> </td>
-                    <td>
-                        <?php
-                        if ($p_availabe == 0) {
-                            echo "<p class='text-danger'>0</p>";
-                        } else {
-                            echo $p_availabe;
-                        }
+$query3="SELECT * FROM CART";
+$result3 =mysqli_query($conn, $query3);
+$count=0;
 
-                        ?>
-                        </select>
-                    <?php } ?>
-                    </td>
-                </tr>
+while ($row = mysqli_fetch_assoc($result3)) {
+    $temp_p_id=$row["P_ID"];
+    $temp_num=$row["BILL_P_NUM"];
 
-            <?php } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-        */
+
+    if($temp_p_id===$p_idd)
+    {
+        $bill_p_num=$bill_p_num+$temp_num;
+        $bill_p_total = $bill_p_price * $bill_p_num;
+       
+
+        $sql4 = "UPDATE `cart` SET 
+        `BILL_P_NUM`=$bill_p_num,`BILL_P_TOTAL`=$bill_p_total WHERE `P_ID`=$p_idd ";
+
+
+        if ($conn->query($sql4) === TRUE) {
+            $count=1;
+            break;
+    } else {
+        echo "product cart update error";
+    }
+
+    }
+
+}
+
+if ($count!=1){
+    $sql2 = "INSERT INTO CART(BILL_ID,P_ID,BILL_P_NAME,BILL_P_PRICE,BILL_P_NUM,BILL_P_TOTAL) VALUES ($bill_id,$p_idd,'$bill_p_name',$bill_p_price,$bill_p_num,$bill_p_total)";
+}
 
     ?>
 
@@ -101,7 +82,7 @@
     <br>
 
     <?php
-    if ($conn->query($sql2) === TRUE) {
+    if ($conn->query($sql2) === TRUE or $conn->query($sql4) === TRUE) {
 
         $query2 = "SELECT * FROM CART WHERE bill_id=1";
 
@@ -140,7 +121,7 @@
         }
         ?>
         </table>
-        <button onclick="window.location.href='index.php';"> <b>CONTINUE SHOPPING<b></button>
+        <button onclick="window.location.href='staff.php';"> <b>CONTINUE SHOPPING<b></button>
         <br><br><br><br>
 
         <form action="checkout.php" method="POST">
