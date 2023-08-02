@@ -1,6 +1,7 @@
 <htmL>
 
 <body>
+    
     <?php
     include("connection.php");
     if (isset($_POST['input'])) {
@@ -99,6 +100,10 @@
                         </tbody>
                     </table>
                 </form>
+                <!--<div style="position:fixed; width:100%; height:70px; padding:5px; bottom:0px; "> -->
+    
+
+    
     <?php
             }
         } else {
