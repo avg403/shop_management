@@ -23,7 +23,7 @@
     </h1>
 <h2>
     <a href="./staff/index.php">STAFF MANAGEMNENT</a><br>
-    <a href="./product/prod_mgmt.php">PRODUCT MANAGEMENT</a><br>
+    <a href="./product/pro_updel.php">PRODUCT MANAGEMENT</a><br>
     <a href="bill_history/history.php"> BILL HISTORY</a><br>
     <a href="bill_history/total.php"> VIEW PROFIT </a><br>
 </h2>

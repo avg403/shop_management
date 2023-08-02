@@ -61,17 +61,13 @@ if (isset($_POST["submit"])) {
       "
       <script>
         alert(' New Product Successfully Added ');
-        document.location.href = 'http://localhost/shop_mgmt/admin/admin.php';
+        document.location.href = 'http://localhost/shop_mgmt/admin/product/pro_updel.php';
       </script>
       ";
     }
   }
 }
 ?>
-
-
-
-
 
 
 
