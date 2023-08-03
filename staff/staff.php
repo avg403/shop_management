@@ -14,6 +14,10 @@
                           GO TO CART</button>
                           <button onclick="window.location.href='day_sale.php';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
                           TODAY SALE</button>
+                          <button onclick="window.location.href='http://localhost/shop_mgmt/';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
+                          HOME</button>
+
+
         </div>
 
         <input type="text" class="form-control" id="live_search" autocomplete="off" placeholder="Search..." autofocus>

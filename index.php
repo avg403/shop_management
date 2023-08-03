@@ -71,9 +71,100 @@
                 <h2 class="section-heading text-uppercase">Products</h2>
                 <h3 class="section-subheading text-muted">You can always find something.</h3>
             </div>
-
+            <button onclick="window.location.href='#clothes';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
+                CLOTHING AND APPAREL</button>
             <button onclick="window.location.href='#cosmetics';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
                 COSMETICS</button>
+                <button onclick="window.location.href='#footware';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
+                FOOTWARE AND SHOES</button>
+                <button onclick="window.location.href='#electronics';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
+                ELECTRONICS AND GADJETS</button>
+                <button onclick="window.location.href='#toys';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
+                GAMES AND TOYS</button>
+                <button onclick="window.location.href='#pet';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
+                VETERINARY AND PET ITEMS</button>
+                
+                <button onclick="window.location.href='#stationary';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
+                STATIONARY</button>
+                <button onclick="window.location.href='#tupperware';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
+                TUPPERWARE</button>
+                <button onclick="window.location.href='#sports';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
+                SPORTS PRODUCT</button>
+        </div>
+    </section>
+
+
+
+
+
+                <section id="clothes">
+                <div class="row">
+
+                    <?php
+                    require 'connection.php';
+                    $sql = "SELECT *FROM products WHERE C_ID=1";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        $count = 1;
+                        while ($row = $result->fetch_assoc()) {
+
+                            $pid = $row["P_ID"];
+                            $pname = $row["P_NAME"];
+                            $pprice = $row["P_PRICE"];
+                            $pdetails = $row["P_DETAILS"];
+                            $pimage = $row["P_IMAGE"];
+
+                            $message =  $count . "portfolio";
+                            $query2 = "SELECT * from category where c_id=1";
+                            $result2 = mysqli_query($conn, $query2);
+
+                            if (mysqli_num_rows($result2) > 0) {
+                                while ($row2 = mysqli_fetch_assoc($result2)) { {
+                                        $cat = $row2["P_CATEGORY"];
+                                    }
+                                }
+                            }
+
+                    ?>
+
+                            <div class="col-lg-4 col-sm-6 mb-4">
+                                <!-- Product item 1-->
+                                <div class="portfolio-item">
+                                    <a class="portfolio-link" data-bs-toggle="modal" href="#<?php echo "$pname" ?>">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"></div>
+                                        </div>
+                                        <img class="img-fluid" src="http://localhost/shop_mgmt/admin/product/img/<?php echo $pimage; ?>" alt="..." />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading"> <?php echo "$pname" ?></div>
+                                        <div class="portfolio-caption-subheading text-muted"><?php echo "$cat" ?></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+                    <?php    }
+                    } ?>
+                </div>
+
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             <section id="cosmetics">
@@ -122,40 +213,7 @@
                                 </div>
                             </div>
 
-                            <div class="portfolio-modal modal fade" id="<?php echo "$pname" ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="close-modal" data-bs-dismiss="modal"><img src="./img/close-icon.svg" alt="Close modal" /></div>
-                                        <div class="container">
-                                            <div class="row justify-content-center">
-                                                <div class="col-lg-8">
-                                                    <div class="modal-body">
-                                                        <!-- Product details-->
-                                                        <h2 class="text-uppercase"><?php echo "$pname" ?></h2>
-
-                                                        <img class="img-fluid d-block mx-auto" src="http://localhost/shop_mgmt/admin/product/img/<?php echo $pimage; ?>" alt="..." />
-                                                        <p><?php echo "$pdetails" ?></p>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <strong>Price:</strong>
-                                                                Rs.<?php echo "$pprice" ?>
-                                                            </li>
-                                                            <li>
-                                                                <strong>Category:</strong>
-                                                                <?php echo "$cat" ?>
-                                                            </li>
-                                                        </ul>
-                                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                                            <i class="fas fa-xmark me-1"></i>
-                                                            Close Product
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                     <?php    }
                     } ?>
                 </div>
@@ -163,6 +221,445 @@
             </section>
 
     </section>
+
+
+
+    <section id="footware">
+                <div class="row">
+
+                    <?php
+                    require 'connection.php';
+                    $sql = "SELECT *FROM products WHERE C_ID=3";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        $count = 1;
+                        while ($row = $result->fetch_assoc()) {
+
+                            $pid = $row["P_ID"];
+                            $pname = $row["P_NAME"];
+                            $pprice = $row["P_PRICE"];
+                            $pdetails = $row["P_DETAILS"];
+                            $pimage = $row["P_IMAGE"];
+
+                            $message =  $count . "portfolio";
+                            $query2 = "SELECT * from category where c_id=3";
+                            $result2 = mysqli_query($conn, $query2);
+
+                            if (mysqli_num_rows($result2) > 0) {
+                                while ($row2 = mysqli_fetch_assoc($result2)) { {
+                                        $cat = $row2["P_CATEGORY"];
+                                    }
+                                }
+                            }
+
+                    ?>
+
+                            <div class="col-lg-4 col-sm-6 mb-4">
+                                <!-- Product item 1-->
+                                <div class="portfolio-item">
+                                    <a class="portfolio-link" data-bs-toggle="modal" href="#<?php echo "$pname" ?>">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"></div>
+                                        </div>
+                                        <img class="img-fluid" src="http://localhost/shop_mgmt/admin/product/img/<?php echo $pimage; ?>" alt="..." />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading"> <?php echo "$pname" ?></div>
+                                        <div class="portfolio-caption-subheading text-muted"><?php echo "$cat" ?></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+                    <?php    }
+                    } ?>
+                </div>
+
+            </section>
+
+
+
+
+
+            <section id="electronics">
+                <div class="row">
+
+                    <?php
+                    require 'connection.php';
+                    $sql = "SELECT *FROM products WHERE C_ID=4";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        $count = 1;
+                        while ($row = $result->fetch_assoc()) {
+
+                            $pid = $row["P_ID"];
+                            $pname = $row["P_NAME"];
+                            $pprice = $row["P_PRICE"];
+                            $pdetails = $row["P_DETAILS"];
+                            $pimage = $row["P_IMAGE"];
+
+                            $message =  $count . "portfolio";
+                            $query2 = "SELECT * from category where c_id=4";
+                            $result2 = mysqli_query($conn, $query2);
+
+                            if (mysqli_num_rows($result2) > 0) {
+                                while ($row2 = mysqli_fetch_assoc($result2)) { {
+                                        $cat = $row2["P_CATEGORY"];
+                                    }
+                                }
+                            }
+
+                    ?>
+
+                            <div class="col-lg-4 col-sm-6 mb-4">
+                                <!-- Product item 1-->
+                                <div class="portfolio-item">
+                                    <a class="portfolio-link" data-bs-toggle="modal" href="#<?php echo "$pname" ?>">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"></div>
+                                        </div>
+                                        <img class="img-fluid" src="http://localhost/shop_mgmt/admin/product/img/<?php echo $pimage; ?>" alt="..." />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading"> <?php echo "$pname" ?></div>
+                                        <div class="portfolio-caption-subheading text-muted"><?php echo "$cat" ?></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+                    <?php    }
+                    } ?>
+                </div>
+
+            </section>
+
+
+            <section id="toys">
+                <div class="row">
+
+                    <?php
+                    require 'connection.php';
+                    $sql = "SELECT *FROM products WHERE C_ID=5";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        $count = 1;
+                        while ($row = $result->fetch_assoc()) {
+
+                            $pid = $row["P_ID"];
+                            $pname = $row["P_NAME"];
+                            $pprice = $row["P_PRICE"];
+                            $pdetails = $row["P_DETAILS"];
+                            $pimage = $row["P_IMAGE"];
+
+                            $message =  $count . "portfolio";
+                            $query2 = "SELECT * from category where c_id=5";
+                            $result2 = mysqli_query($conn, $query2);
+
+                            if (mysqli_num_rows($result2) > 0) {
+                                while ($row2 = mysqli_fetch_assoc($result2)) { {
+                                        $cat = $row2["P_CATEGORY"];
+                                    }
+                                }
+                            }
+
+                    ?>
+
+                            <div class="col-lg-4 col-sm-6 mb-4">
+                                <!-- Product item 1-->
+                                <div class="portfolio-item">
+                                    <a class="portfolio-link" data-bs-toggle="modal" href="#<?php echo "$pname" ?>">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"></div>
+                                        </div>
+                                        <img class="img-fluid" src="http://localhost/shop_mgmt/admin/product/img/<?php echo $pimage; ?>" alt="..." />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading"> <?php echo "$pname" ?></div>
+                                        <div class="portfolio-caption-subheading text-muted"><?php echo "$cat" ?></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+                    <?php    }
+                    } ?>
+                </div>
+
+            </section>
+
+            <section id="pet">
+                <div class="row">
+
+                    <?php
+                    require 'connection.php';
+                    $sql = "SELECT *FROM products WHERE C_ID=6";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        $count = 1;
+                        while ($row = $result->fetch_assoc()) {
+
+                            $pid = $row["P_ID"];
+                            $pname = $row["P_NAME"];
+                            $pprice = $row["P_PRICE"];
+                            $pdetails = $row["P_DETAILS"];
+                            $pimage = $row["P_IMAGE"];
+
+                            $message =  $count . "portfolio";
+                            $query2 = "SELECT * from category where c_id=6";
+                            $result2 = mysqli_query($conn, $query2);
+
+                            if (mysqli_num_rows($result2) > 0) {
+                                while ($row2 = mysqli_fetch_assoc($result2)) { {
+                                        $cat = $row2["P_CATEGORY"];
+                                    }
+                                }
+                            }
+
+                    ?>
+
+                            <div class="col-lg-4 col-sm-6 mb-4">
+                                <!-- Product item 1-->
+                                <div class="portfolio-item">
+                                    <a class="portfolio-link" data-bs-toggle="modal" href="#<?php echo "$pname" ?>">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"></div>
+                                        </div>
+                                        <img class="img-fluid" src="http://localhost/shop_mgmt/admin/product/img/<?php echo $pimage; ?>" alt="..." />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading"> <?php echo "$pname" ?></div>
+                                        <div class="portfolio-caption-subheading text-muted"><?php echo "$cat" ?></div>
+                                    </div>
+                                </div>
+                        </div>
+
+                           
+                    <?php    }
+                    } ?>
+                </div>
+
+            </section>
+
+
+
+            <section id="stationary">
+                <div class="row">
+
+                    <?php
+                    require 'connection.php';
+                    $sql = "SELECT *FROM products WHERE C_ID=7";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        $count = 1;
+                        while ($row = $result->fetch_assoc()) {
+
+                            $pid = $row["P_ID"];
+                            $pname = $row["P_NAME"];
+                            $pprice = $row["P_PRICE"];
+                            $pdetails = $row["P_DETAILS"];
+                            $pimage = $row["P_IMAGE"];
+
+                            $message =  $count . "portfolio";
+                            $query2 = "SELECT * from category where c_id=7";
+                            $result2 = mysqli_query($conn, $query2);
+
+                            if (mysqli_num_rows($result2) > 0) {
+                                while ($row2 = mysqli_fetch_assoc($result2)) { {
+                                        $cat = $row2["P_CATEGORY"];
+                                    }
+                                }
+                            }
+
+                    ?>
+
+                            <div class="col-lg-4 col-sm-6 mb-4">
+                                <!-- Product item 1-->
+                                <div class="portfolio-item">
+                                    <a class="portfolio-link" data-bs-toggle="modal" href="#<?php echo "$pname" ?>">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"></div>
+                                        </div>
+                                        <img class="img-fluid" src="http://localhost/shop_mgmt/admin/product/img/<?php echo $pimage; ?>" alt="..." />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading"> <?php echo "$pname" ?></div>
+                                        <div class="portfolio-caption-subheading text-muted"><?php echo "$cat" ?></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+                    <?php    }
+                    } ?>
+                </div>
+
+            </section>
+
+            <section id="tupperware">
+                <div class="row">
+
+                    <?php
+                    require 'connection.php';
+                    $sql = "SELECT *FROM products WHERE C_ID=8";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        $count = 1;
+                        while ($row = $result->fetch_assoc()) {
+
+                            $pid = $row["P_ID"];
+                            $pname = $row["P_NAME"];
+                            $pprice = $row["P_PRICE"];
+                            $pdetails = $row["P_DETAILS"];
+                            $pimage = $row["P_IMAGE"];
+
+                            $message =  $count . "portfolio";
+                            $query2 = "SELECT * from category where c_id=8";
+                            $result2 = mysqli_query($conn, $query2);
+
+                            if (mysqli_num_rows($result2) > 0) {
+                                while ($row2 = mysqli_fetch_assoc($result2)) { {
+                                        $cat = $row2["P_CATEGORY"];
+                                    }
+                                }
+                            }
+
+                    ?>
+
+                            <div class="col-lg-4 col-sm-6 mb-4">
+                                <!-- Product item 1-->
+                                <div class="portfolio-item">
+                                    <a class="portfolio-link" data-bs-toggle="modal" href="#<?php echo "$pname" ?>">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"></div>
+                                        </div>
+                                        <img class="img-fluid" src="http://localhost/shop_mgmt/admin/product/img/<?php echo $pimage; ?>" alt="..." />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading"> <?php echo "$pname" ?></div>
+                                        <div class="portfolio-caption-subheading text-muted"><?php echo "$cat" ?></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+                    <?php    }
+                    } ?>
+                </div>
+
+            </section>
+
+            <section id="sports">
+                <div class="row">
+
+                    <?php
+                    require 'connection.php';
+                    $sql = "SELECT *FROM products WHERE C_ID=9";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        $count = 1;
+                        while ($row = $result->fetch_assoc()) {
+
+                            $pid = $row["P_ID"];
+                            $pname = $row["P_NAME"];
+                            $pprice = $row["P_PRICE"];
+                            $pdetails = $row["P_DETAILS"];
+                            $pimage = $row["P_IMAGE"];
+
+                            $message =  $count . "portfolio";
+                            $query2 = "SELECT * from category where c_id=9";
+                            $result2 = mysqli_query($conn, $query2);
+
+                            if (mysqli_num_rows($result2) > 0) {
+                                while ($row2 = mysqli_fetch_assoc($result2)) { {
+                                        $cat = $row2["P_CATEGORY"];
+                                    }
+                                }
+                            }
+
+                    ?>
+
+                            <div class="col-lg-4 col-sm-6 mb-4">
+                                <!-- Product item 1-->
+                                <div class="portfolio-item">
+                                    <a class="portfolio-link" data-bs-toggle="modal" href="#<?php echo "$pname" ?>">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"></div>
+                                        </div>
+                                        <img class="img-fluid" src="http://localhost/shop_mgmt/admin/product/img/<?php echo $pimage; ?>" alt="..." />
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading"> <?php echo "$pname" ?></div>
+                                        <div class="portfolio-caption-subheading text-muted"><?php echo "$cat" ?></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+                    <?php    }
+                    } ?>
+                </div>
+
+            </section>
+
+
+   
+    
+
+
+    
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 
 
@@ -217,6 +714,45 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+
+
+    <!--
+         <div class="portfolio-modal modal fade" id="<?php //echo "$pname" ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="close-modal" data-bs-dismiss="modal"><img src="./img/close-icon.svg" alt="Close modal" /></div>
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                                <div class="col-lg-8">
+                                                    <div class="modal-body">
+                                                      
+                                                        <h2 class="text-uppercase"><?php //echo "$pname" ?></h2>
+
+                                                        <img class="img-fluid d-block mx-auto" src="http://localhost/shop_mgmt/admin/product/img/<?php //echo $pimage; ?>" alt="..." />
+                                                        <p><?php //echo "$pdetails" ?></p>
+                                                        <ul class="list-inline">
+                                                            <li>
+                                                                <strong>Price:</strong>
+                                                                Rs.<?php //echo "$pprice" ?>
+                                                            </li>
+                                                            <li>
+                                                                <strong>Category:</strong>
+                                                                <?php //echo "$cat" ?>
+                                                            </li>
+                                                        </ul>
+                                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                                            <i class="fas fa-xmark me-1"></i>
+                                                            Close Product
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    -->
 </body>
 
 </html>

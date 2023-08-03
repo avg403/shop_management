@@ -18,6 +18,11 @@
         }
     }
     ?>
+
+    <br>
+    <br>
+    <button onclick="window.location.href='http://localhost/shop_mgmt/admin/admin.php';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">ADMIN</button>
+
 </body>
 
 </html>
