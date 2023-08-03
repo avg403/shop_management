@@ -104,6 +104,8 @@
 <center>
 <button onclick="window.location.href= 'http://localhost/shop_mgmt/admin/product/pro_add.php'" style="margin:15px; padding:12px">add product</button>
 </center>
+<center><button onclick="window.location.href='http://localhost/shop_mgmt/admin/admin.php'" style="padding: 10px; margin:10px">ADMIN</button></center>
+
 <script>
             var el_up = document.getElementById("GFG_UP");
               

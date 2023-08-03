@@ -59,4 +59,7 @@
         YEAR : <?php echo $grand_total_year; ?><br>
         MONTH: <?php echo $grand_total_month; ?></br>
         DAY: <?php echo $grand_total_day; ?></br>
+        <br>
+        <button onclick="window.location.href='http://localhost/shop_mgmt/admin/admin.php';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">ADMIN</button>
+
     </h1>

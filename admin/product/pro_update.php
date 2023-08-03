@@ -1,86 +1,3 @@
-<?php
-require 'connection.php';
-if (isset($_POST["submit"])) {
-  $name = $_POST["pname"];
-  if ($_FILES["image"]["error"] == 4) {
-    echo
-    "<script> alert('Image Does Not Exist'); </script>";
-  } else {
-    $fileName = $_FILES["image"]["name"];
-    $fileSize = $_FILES["image"]["size"];
-    $tmpName = $_FILES["image"]["tmp_name"];
-
-    $validImageExtension = ['jpg', 'jpeg', 'png'];
-    $imageExtension = explode('.', $fileName);
-    $imageExtension = strtolower(end($imageExtension));
-    if (!in_array($imageExtension, $validImageExtension)) {
-      echo
-      "
-      <script>
-        alert('Invalid Image Extension');
-      </script>
-      ";
-    } else if ($fileSize > 1000000) {
-      echo
-      "
-      <script>
-        alert('Image Size Is Too Large');
-      </script>
-      ";
-    } else {
-      //$newImageName = uniqid();
-      $newImageName = $name ;
-      $newImageName .= '.' . $imageExtension;
-
-      move_uploaded_file($tmpName, 'img/' . $newImageName);
-
-      $sql="SELECT MAX(P_ID) FROM PRODUCTS";
-      $result=$conn->query($sql);
-      $row=mysqli_fetch_array( $result );
-      $maxid=$row['MAX(P_ID)'];
-  
-      $id=$maxid+1;
-      $product = $_POST["pname"];
-      $pcate = $_POST["category"];
-      $com = $_POST["pcompany"];
-      $price = $_POST["pprice"];
-      $available = $_POST["pavailable"];
-      $details = $_POST["productdetails"];
-      $pimage=$newImageName;
-  
-      $query = $conn->prepare('INSERT INTO PRODUCTS(P_ID,P_NAME,C_ID,P_COMPANY,P_PRICE,P_AVAILABLE,P_DETAILS,P_IMAGE)
-          VALUES (?,?,?,?,?,?,?,?);');
-  
-      $query->bind_param('isisiiss',$id,$product,$pcate,$com,$price,$available,$details,$pimage);
-  
-      $query->execute();
-      
-      mysqli_close($conn);
-
-      echo
-      "
-      <script>
-        alert(' New Product Successfully Added ');
-        document.location.href = 'http://localhost/shop_mgmt/admin/admin.php';
-      </script>
-      ";
-    }
-  }
-}
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html>
 <head>
     <title>
@@ -211,8 +128,8 @@ if($result->num_rows>0) {
           <td><input type="text"       name="productdetails3"  value="<?php echo htmlspecialchars($details1) ?>"  required><br><br></td>
         </tr>
         <tr>
-          <td><p>PRODUCT IMAGE :<br><br></p></td>     
-          <td><input type="file"     name="image3"   value="<?php echo $pimage1 ?>" required> <br><br></td>
+         
+          <td><input type="text"     name="image3"  value="<?php echo $pimage1 ?>" hidden> <br><br></td>
         </tr>
               </table>
   

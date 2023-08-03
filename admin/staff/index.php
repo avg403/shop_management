@@ -101,6 +101,8 @@
 </table>
 
 <center><button onclick="window.location.href='staffreg.php'" style="padding: 10px; margin:10px">ADD STAFF</button></center>
+<center><button onclick="window.location.href='http://localhost/shop_mgmt/admin/admin.php'" style="padding: 10px; margin:10px">ADMIN</button></center>
+
 <script>
             var el_up = document.getElementById("GFG_UP");
               
