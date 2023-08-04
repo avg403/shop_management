@@ -17,7 +17,10 @@
         $query2 = "SELECT * FROM CART WHERE bill_id=1";
 
         $result2 = mysqli_query($conn, $query2);
+<<<<<<< HEAD
         if ($result2->num_rows > 0) {
+=======
+>>>>>>> main
     ?>
         <table border class="table table-bordered table-striped mt-4">
             <thead>
@@ -32,7 +35,9 @@
 
             <?php
             $id=1;
-            
+
+            if ($result2->num_rows > 0) {
+
             while ($row = mysqli_fetch_assoc($result2)) {
                 $b_id = $row['BILL_ID'];
                 $b_name = $row['BILL_P_NAME'];
@@ -72,9 +77,14 @@
         </form>
         <?php }
         else{
+<<<<<<< HEAD
              echo"
             <script>
             alert('no items added  ');
+=======
+            "<script>
+            alert('no items added successfully ');
+>>>>>>> main
             document.location.href = 'http://localhost/shop_mgmt/staff/staff.php';
           </script>
           ";

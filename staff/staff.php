@@ -9,6 +9,7 @@
     <div class="container" style="max-width : 50%;">
 
         <div class="text-center mt-5 mb-4">
+
             <h2>BILLING ITEMS</h2>
             <button onclick="window.location.href='show_cart.php';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark">
                           GO TO CART</button>
@@ -18,7 +19,8 @@
                           HOME</button>
 
 
-        </div>
+
+      
 
         <input type="text" class="form-control" id="live_search" autocomplete="off" placeholder="Search..." autofocus>
 
@@ -48,16 +50,22 @@
                         success: function(data) {
                             $("#searchresult").html(data);
                             $("#searchresult").css("display", "block");
+                            
+                            
 
                         }
                     });
                 } else {
                     $("#searchresult").css("display", "none");
+                    
                 }
 
             });
         });
+        
     </script>
+    
+   
 </body>
 
 </html>

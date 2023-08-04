@@ -54,12 +54,6 @@ while ($row = mysqli_fetch_assoc($result3)) {
 
         if ($conn->query($sql4) === TRUE) {
             $count=1;
-            echo
-            "<script>
-            alert(' item updated successfully');
-            document.location.href = 'http://localhost/shop_mgmt/staff/staff.php';
-          </script>
-          ";
             break;
     } else {
         echo "product cart update error";
@@ -71,16 +65,7 @@ while ($row = mysqli_fetch_assoc($result3)) {
 
 if ($count!=1){
     $sql2 = "INSERT INTO CART(BILL_ID,P_ID,BILL_P_NAME,BILL_P_PRICE,BILL_P_NUM,BILL_P_TOTAL) VALUES ($bill_id,$p_idd,'$bill_p_name',$bill_p_price,$bill_p_num,$bill_p_total)";
-   if ($conn->query($sql2) === TRUE) {
-    echo
-    "<script>
-    alert(' item added successfully ');
-    document.location.href = 'http://localhost/shop_mgmt/staff/staff.php';
-  </script>
-  ";
 }
-
-}    
 
     ?>
 
