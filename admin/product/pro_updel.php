@@ -36,7 +36,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "SHOP";
+    $dbname = "shop";
 
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -46,21 +46,22 @@
     }
     
     
-    $sql="SELECT*FROM STAFF_INFO";
+    $sql="SELECT*FROM PRODUCTS";
     $result= $conn->query($sql);
 
     ?> 
-    <table  >
+    <table style="width:100%">
     <tr>
-        <th>STAFF_ID</th>
-        <th>STAFF_NAME</th>
-        <th>STAFF_PASSWORD</th>
-        <th>STAFF_AGE</th>
-        <th>STAFF_SEX</th>
-        <th>STAFF_DOB</th>
-        <th>STAFF_ADDRESS</th>
-        <th>STAFF_SALARY</th>
-        <th>STAFF_PHONE</th>
+        <th>P_ID</th>
+        <th>PRODUCT</th>
+        <th>CATEGORY ID</th>
+        <th>COMPANY</th>
+        <th>PRICE</th>
+        <th>PRODUCT AVAILABLE</th>
+        <th>PRODUCT DETAILS</th>
+        <th>PRODUCT IMAGE</th>
+        
+        
         <th style="color:lightcyan;">UPDATE</th>
         <th style="color:lightcyan;">DELETE</th>
     </tr>
@@ -68,21 +69,21 @@
     <?php
     if($result->num_rows>0) {
         while($row = $result->fetch_assoc()) {
-        $id1= $row["STAFF_ID"];
+        $id1= $row["P_ID"];
             ?>
         
         <tr>
-        <td> <?php echo $row["STAFF_ID"];  ?></td>
-        <td> <?php echo $row["STAFF_NAME"];  ?></td>
-        <td> <?php echo $row["STAFF_PASSWORD"];  ?></td>
-        <td> <?php echo $row["STAFF_AGE"];  ?></td>
-        <td> <?php echo $row["STAFF_SEX"];  ?></td>
-        <td> <?php echo $row["STAFF_DOB"];  ?></td>
-        <td> <?php echo $row["STAFF_ADDRESS"];  ?></td>
-        <td> <?php echo $row["STAFF_SALARY"];  ?></td>
-        <td> <?php echo $row["STAFF_PHONE"];  ?></td>
-        <td> <a href="staffupd.php?id2=<?php echo $id1; ?>" > UPDATE</a></td>
-        <td> <a href="staffdel.php?id1=<?php echo $id1; ?>" onclick="return confirm('Permanently delete the record?You cannot undo this.')">DELETE</a></td>
+        <td> <?php echo $row["P_ID"];  ?></td>
+        <td> <?php echo $row["P_NAME"];  ?></td>
+        <td> <?php echo $row["C_ID"];  ?></td>
+        <td> <?php echo $row["P_COMPANY"];  ?></td>
+        <td> <?php echo $row["P_PRICE"];  ?></td>
+        <td> <?php echo $row["P_AVAILABLE"];  ?></td>
+        <td> <?php echo $row["P_DETAILS"];  ?></td>
+        <td> <?php echo $row["P_IMAGE"];  ?></td>
+       
+        <td> <a href="pro_update.php?id2=<?php echo $id1; ?>" > UPDATE</a></td>
+        <td> <a href="pro_delete.php?id1=<?php echo $id1; ?>" onclick="return confirm('Permanently delete the record?You cannot undo this.')">DELETE</a></td>
         
         
     </tr>
@@ -100,7 +101,9 @@
 
 </table>
 
-<center><button onclick="window.location.href='staffreg.php'" style="padding: 10px; margin:10px">ADD STAFF</button></center>
+<center>
+<button onclick="window.location.href= 'http://localhost/shop_mgmt/admin/product/pro_add.php'" style="margin:15px; padding:12px">add product</button>
+</center>
 <center><button onclick="window.location.href='http://localhost/shop_mgmt/admin/admin.php'" style="padding: 10px; margin:10px">ADMIN</button></center>
 
 <script>
@@ -109,5 +112,6 @@
             el_up.innerHTML = 
                 "Click on the LINK for further confirmation."; 
         </script> 
+
 </body>  
 </html>    

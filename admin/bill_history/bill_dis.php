@@ -41,7 +41,7 @@
                     <div class="col-xl-3 float-end">
                         <a href="javascript:window.print()" class="btn btn-light text-capitalize border-0" data-mdb-ripple-color="dark"><i class="fas fa-print text-primary"></i> Print</a>
                         <button id="download" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark"><i class="far fa-file-pdf text-danger"></i> Export</button>
-                        <button onclick="window.location.href='/live_search2/admin/admin.php';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark"><i class="fa fa-home"></i>
+                        <button onclick="window.location.href='http://localhost/shop_mgmt/admin/admin.php';" class="btn btn-light text-capitalize" data-mdb-ripple-color="dark"><i class="fa fa-home"></i>
                             Home</button>
                     </div>
                     <hr>

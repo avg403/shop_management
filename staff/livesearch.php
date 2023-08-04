@@ -39,14 +39,27 @@
                     <?php
                     $p_id = $row['P_ID'];
                     $p_name = $row['P_NAME'];
-                    // $p_category = $row['P_CATEGORY'];
+                    $c_id = $row['C_ID'];
                     $p_company = $row['P_COMPANY'];
                     $p_price = $row['P_PRICE'];
                     $p_availabe = $row['P_AVAILABLE'];
                     $p_details = $row['P_DETAILS'];
                     $p_image = $row['P_IMAGE'];
                     $p_temp = 0;
-                    ?>
+                    
+
+                    $query2 = "SELECT * from category where c_id=$c_id";
+    
+            $result2 = mysqli_query($conn, $query2);
+    
+    
+            if (mysqli_num_rows($result2) > 0){
+            while ($row2 = mysqli_fetch_assoc($result2)) { 
+                {$cat= $row2["P_CATEGORY"];}}}
+                ?>
+
+
+                 
                     <table class="table table-bordered table-striped mt-4 ">
 
                         <tr>
@@ -58,7 +71,7 @@
                                 <input type="hidden" name="pro_name" value="<?php echo $p_name; ?>" />
                                 <?php echo $p_name; ?>
                             </td>
-                            <td style="width:10%;"> <?php //echo $p_category; 
+                            <td style="width:10%;"> <?php echo $cat; 
                                                     ?> </td>
                             <td style="width:10%;"> <?php echo $p_company; ?> </td>
                             <td style="width:10%;">
